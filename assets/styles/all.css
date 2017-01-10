@@ -1,0 +1,261 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+html, body, #root {
+
+}
+
+#root {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    color: #A7A1AE;
+}
+
+a {
+    text-decoration: none;
+}
+
+.toolbar {
+    width: 100%;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar-list {
+    display: flex;
+    margin: 0 auto;
+
+}
+
+.toolbar a {
+    text-transform: uppercase;
+    color: #e2e2e2;
+    width: 100%;
+    text-align: center;
+    border-left: 1px solid #e3e3e3;
+}
+
+.toolbar a:last-child {
+    border-right: 1px solid #e3e3e3;
+}
+
+.toolbar a:hover, .toolbar a.active {
+    transition: .1s ease;
+    color: #979797;
+    text-decoration: none;
+    border-bottom: 3px solid #b9ffc5;
+}
+
+.songs {
+    padding-top: 50px;
+}
+
+/*overlay effects*/
+
+.audio-holder {
+    height: 180px;
+    border: 5px solid #fff;
+    box-shadow: 0 0 5px #aaa;
+    margin-bottom: 25px;
+}
+
+.view {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    cursor: default;
+}
+
+.view .mask, .view .content {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.view img {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.view a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0;
+    text-indent: -9999px;
+    width: 20px;
+    height: 20px;
+}
+
+.effect img {
+    background: url(../img/def-pic.jpg) 50%;
+    opacity: 1;
+    transform: scale(1, 1);
+    transition: all 0.2s ease-in;
+    display: block;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    background-size: cover;
+}
+
+.effect .mask {
+    opacity: 0;
+    overflow: visible;
+    border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
+    border-style: solid;
+    border-width: 150px;
+    width: 0;
+    height: 0;
+    transform: translateY(-125px);
+    transition: transform 0.2s 0.1s ease-out, opacity 0.3s ease-in-out;
+}
+
+.effect a.info {
+    opacity: 0;
+    transform: translateY(-125px);
+    transition: transform 0.3s ease-in, opacity 0.1s ease-in-out;
+}
+
+.effect:hover img, .audio-holder.active img {
+    opacity: 0.7;
+    transform: scale(2, 2);
+}
+
+.effect:hover .mask, .audio-holder.active .mask {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.effect:hover a.info, .audio-holder.active a.info{
+    opacity: 1;
+    transform: translateY(100px);
+}
+
+/*PLAYER*/
+
+#player {
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    background: #f7f7f7;
+
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.track-info {
+    float: left;
+}
+
+.player-image {
+    height: 80px;
+    float: left;
+    margin-right: 8px;
+}
+
+/*minus track-detail*/
+.player-controls {
+    padding-left: calc(50% - 280px);
+    transform: translateX(-50%);
+}
+
+.track-detail {
+    text-align: left;
+    width: 380px;
+}
+
+.track-detail > p:first-child {
+    font-size: 18px;
+}
+
+.track-detail > p:last-child {
+    font-size: 14px;
+    opacity: .8;
+}
+
+.track-detail > p {
+    font-weight: 500;
+    padding: 4px;
+    margin: 0;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-card-title {
+    color: #2e2e2e;
+}
+
+.song-card-user-username {
+    color: #c4c4c4;
+}
+
+.current-track figure.albumn-cover {
+    float: left;
+    width: 5.5rem;
+    height: 5.5rem;
+}
+
+.albumn-cover img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.player-controls div {
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.player-controls>div:hover, .player-controls>.active{
+    color: #333;
+    text-decoration: none;
+}
+
+.player-controls-play.active{
+    background: #faa700;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.volume {
+    padding-right: 15px;
+}
+.range {
+    -webkit-appearance: none;
+    height: 4px;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+.duration {
+    cursor: pointer;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+}
+
+.duration .total,.duration .current {
+    background: #E1E1E1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+}
+
+.duration .current {
+    background: #faa700;
+    position: absolute;
+    width: 0;
+}
